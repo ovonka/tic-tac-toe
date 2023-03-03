@@ -8,7 +8,7 @@ function GameCell({ cellItem, index }) {
   //Handle board update
   const handleCellClick = () => {
     updateBoard(index);
-    const result = checkForWinner(game.board);
+    checkForWinner(game.board);
   };
   return <CellStyle onClick={handleCellClick}>{cellItem}</CellStyle>;
 }
