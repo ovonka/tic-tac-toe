@@ -20,12 +20,12 @@ export const checkForWinner = (board) => {
       console.log("COLUMN WINNER");
     }
   }
-  //DIAGNOL
+  //DIAGNOL 1
   if (board[0] === board[4] && board[4] === board[8]) {
     console.log("we have a HYENA up in here");
     return true;
   }
-
+  //DIAGNOL 2
   if (board[2] === board[4] && board[4] === board[6]) {
     console.log("we have a HYENA up in here");
     return true;

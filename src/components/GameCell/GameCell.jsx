@@ -5,6 +5,7 @@ import { checkForWinner } from "../../utils/GameUtils";
 
 function GameCell({ cellItem, index }) {
   const { updateBoard, game } = useContext(GameContext);
+  //Handle board update
   const handleCellClick = () => {
     updateBoard(index);
     const result = checkForWinner(game.board);
