@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { CellStyle } from "./GameCell.styled";
 import { GameContext } from "../../contexts/GameContext";
 import { checkForWinner } from "../../utils/GameUtils";
+import { ReactComponent as IconX } from "../../assets/svgs/icon-x.svg";
+import { ReactComponent as IconO } from "../../assets/svgs/icon-o.svg";
+import { ReactComponent as IconXoutline } from "../../assets/svgs/icon-x-outline.svg";
+import { ReactComponent as IconOoutline } from "../../assets/svgs/icon-o-outline.svg";
 
 function GameCell({ cellItem, index }) {
   const { updateBoard, game } = useContext(GameContext);
@@ -10,7 +14,28 @@ function GameCell({ cellItem, index }) {
     updateBoard(index);
     checkForWinner(game.board);
   };
-  return <CellStyle onClick={handleCellClick}>{cellItem}</CellStyle>;
+  if (cellItem === "x") {
+    return (
+      <CellStyle>
+        <IconX className="markedItem" />
+      </CellStyle>
+    );
+  } else if (cellItem === "o") {
+    return (
+      <CellStyle>
+        <IconO className="markedItem" />
+      </CellStyle>
+    );
+  }
+  return (
+    <CellStyle onClick={handleCellClick}>
+      {game.turn === "x" ? (
+        <IconXoutline className="outlineIcon" />
+      ) : (
+        <IconOoutline className="outlineIcon" />
+      )}
+    </CellStyle>
+  );
 }
 
 export default GameCell;
