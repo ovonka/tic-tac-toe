@@ -6,17 +6,21 @@ import Button from "../../Button/Button";
 import { ModalBody, ModalFooter, ModalHeader } from "../Modal.styled";
 
 function RoundOverModal() {
-  const { resetBoard } = useContext(GameContext);
+  const { resetBoard, game } = useContext(GameContext);
   const { handleModal } = useContext(ModalContext);
   return (
     <>
       <ModalHeader>
-        <Title>Nka Wins Round </Title>
+        <Title primary>{game.roundWinner.name}</Title>
       </ModalHeader>
       <ModalBody>
-        <SubTitle>Choices will be switched</SubTitle>
-        <SubTitle>Nkah: 1</SubTitle>
-        <SubTitle>Thaby: 1</SubTitle>
+        <SubTitle primary>Choices will be switched</SubTitle>
+        <SubTitle primary>
+          {game.player1.name}:{game.player1.score}
+        </SubTitle>
+        <SubTitle primary>
+          {game.player2.name}:{game.player2.score}
+        </SubTitle>
       </ModalBody>
       <ModalFooter>
         {" "}

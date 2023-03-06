@@ -10,12 +10,14 @@ import { ModalContext } from "../../contexts/ModalContext";
 import RoundOverModal from "../Modal/RoundOverModal/RoundOverModal";
 
 function GameCell({ cellItem, index }) {
-  const { updateBoard, game } = useContext(GameContext);
+  const { updateBoard, game, roundComplete } = useContext(GameContext);
   const { handleModal } = useContext(ModalContext);
   //Handle board update
   const handleCellClick = () => {
     updateBoard(index);
-    if (checkForWinner(game.board)) {
+    const result = checkForWinner(game.board);
+    if (result) {
+      roundComplete();
       handleModal(<RoundOverModal />);
     }
   };
