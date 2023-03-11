@@ -11,10 +11,14 @@ function RoundOverModal() {
   return (
     <>
       <ModalHeader>
-        <Title primary>{game.roundWinner.name}</Title>
+        <Title primary>
+          {game.roundWinner
+            ? `${game.roundWinner.name} Wins Round`
+            : "Round drawn"}
+        </Title>
       </ModalHeader>
       <ModalBody>
-        <SubTitle primary>Choices will be switched</SubTitle>
+        <SubTitle primary>Choices will be switched now</SubTitle>
         <SubTitle primary>
           {game.player1.name}:{game.player1.score}
         </SubTitle>

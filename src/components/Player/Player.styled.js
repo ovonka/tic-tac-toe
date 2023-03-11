@@ -5,6 +5,17 @@ export const PlayerWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10rem;
-  background-color: ${(props) => (props.isPlayeractive ? "yellow" : "purple")};
+  margin: 6rem;
+
+  ${(props) => props.theme.media.mobile} {
+    flex-direction: row;
+  }
+`;
+
+export const AvatarWrapper = styled.div`
+  div {
+    display: flex;
+    height: 10rem;
+    width: 10rem;
+  }
 `;

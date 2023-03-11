@@ -5,7 +5,7 @@ export const GameContext = createContext({});
 export const GameContextProvider = (props) => {
   //INITIAL STATE OF THE GAME
   const [game, setGame] = useState({
-    board: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    board: [null, null, null, null, null, null, null, null, null],
     player1: {
       choice: "x",
       name: "Nkanyiso",
@@ -33,7 +33,9 @@ export const GameContextProvider = (props) => {
   const resetBoard = () => {
     setGame({
       ...game,
-      board: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      board: [null, null, null, null, null, null, null, null, null],
+      turn: "x",
+      roundWinner: "",
     });
   };
   //SWITCH TURN (who starts)
@@ -53,22 +55,42 @@ export const GameContextProvider = (props) => {
     }));
   };
   const updateScore = (winner) => {
-    setGame((prevGame) => ({
-      ...prevGame,
-      [winner]: {
-        ...prevGame[winner],
-        score: prevGame[winner].score + 1,
-      },
-    }));
+    // winner is always going to be:
+    // player1, player2, draw
+
+    if (winner === "draw") {
+      setGame((prevGame) => ({
+        ...prevGame,
+        player1: {
+          ...prevGame.player1,
+          score: prevGame.player1.score + 0.5,
+        },
+        player2: {
+          ...prevGame.player2,
+          score: prevGame.player2.score + 0.5,
+        },
+        roundWinner: "",
+      }));
+    } else {
+      setGame((prevGame) => ({
+        ...prevGame,
+        [winner]: {
+          ...prevGame[winner],
+          score: prevGame[winner].score + 1,
+        },
+        roundWinner: prevGame[winner],
+      }));
+    }
   };
   //AFTER EVERY ROUND UPDATE
-  const roundComplete = () => {
-    if (game.turn === game.player1.choice) {
+  const roundComplete = (result) => {
+    if (game.turn === game.player1.choice && result !== "draw") {
       updateScore("player1");
-    } else if (game.turn === game.player2.choice) {
+    } else if (game.turn === game.player2.choice && result !== "draw") {
       updateScore("player2");
     } else {
-      console.log("draw");
+      updateScore("draw");
+      console.log("DRAW");
     }
     switchTurn();
   };
