@@ -21,7 +21,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   color: ${(props) =>
     props.primary ? props.theme.colors.secondary : props.theme.colors.text};
-  font-size: 3rem;
+  font-size: 4rem;
   font-family: "Pacifico", Cursive;
   background-color: transparent;
 
