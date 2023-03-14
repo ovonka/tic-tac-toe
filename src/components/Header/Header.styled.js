@@ -5,8 +5,8 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 15vh;
-  padding: 2rem;
+  height: 10vh;
+  padding: 3rem;
 
   .logo {
     height: 4rem;
