@@ -9,7 +9,7 @@ export const PlayerWrapper = styled.div`
 
   ${(props) => props.theme.media.mobile} {
     flex-direction: row;
-    margin: 6rem;
+    margin: 2rem;
   }
 `;
 

@@ -4,14 +4,15 @@ export const CellStyle = styled.button`
   background-color: ${(props) => props.theme.colors.secondary};
   color: ${(props) => props.theme.colors.primary};
   font-size: 3rem;
-  height: 10rem;
-  width: 10rem;
+  height: 8rem;
+  width: 8rem;
   margin: 10px;
+  margin-bottom: 10px;
   border: none;
   border-radius: 2.5rem;
   box-shadow: 3px 10px ${(props) => props.theme.colors.cream};
   cursor: pointer;
-  padding: 3rem;
+  padding: 2rem;
 
   .markedItem {
     path {
